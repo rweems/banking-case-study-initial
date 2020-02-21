@@ -1,5 +1,9 @@
 # Banking Case Study
-
+* Rickey Weems 2000287
+* Finished the microservices. 
+* Finished some of the Orchestrator
+* Didn't figure out the circuit breaker, leading zeros for id's, balance deletes on update
+ 
 You're going to create a banking application.  The banking application has the following lines of business (LoBs):
 
 * Deposit Accounts
