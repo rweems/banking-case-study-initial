@@ -9,27 +9,27 @@ import java.util.Optional;
 
 @Service
 public class DepositService {
-    private DepositRepository depositRepository;
+    private DepositRepository dr;
 
-    public DepositService(DepositRepository depositRepository) {
-        this.depositRepository = depositRepository;
+    public DepositService(DepositRepository dr) {
+        this.dr = dr;
     }
 
 
     public Deposit save(Deposit deposit) {
-        return depositRepository.save(deposit);
+        return dr.save(deposit);
     }
 
     public List<Deposit> findAllById(Long id) {
-        return depositRepository.findAllById(id);
+        return dr.findAllById(id);
     }
 
     public List<Deposit> findAll() {
-        return depositRepository.findAll();
+        return dr.findAll();
     }
 
     public Optional<Deposit> findById(Long id) {
-        return depositRepository.findById(id);
+        return dr.findById(id);
     }
 
     public Deposit updateDepositAccount(Long id, Deposit updatedAccount) {
@@ -44,6 +44,6 @@ public class DepositService {
     }
 
     public void delete(Long id) {
-        depositRepository.deleteById(id);
+        dr.deleteById(id);
     }
 }
