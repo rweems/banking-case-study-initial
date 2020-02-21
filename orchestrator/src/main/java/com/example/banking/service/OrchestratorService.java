@@ -18,14 +18,21 @@ public class OrchestratorService {
         String deposit = orchestratorRestClient.getDeposit(id);
         String creditCard = orchestratorRestClient.getCreditCard(id);
         StringBuilder accountSummary = new StringBuilder();
-        accountSummary.append("account summary ");
-        accountSummary.append("deposit ");
-        accountSummary.append(deposit);
-        accountSummary.append("credit card ");
-        accountSummary.append(creditCard);
-        accountSummary.append("auto loan ");
-        accountSummary.append(autoLoan);
 
+        accountSummary.append("{ \n\"account summary\": { ");
+        accountSummary.append("\n ");
+
+        accountSummary.append(" \"depositAccounts\" : ");
+        accountSummary.append(deposit);
+        accountSummary.append(",\n ");
+
+        accountSummary.append(" \"creditAccounts\" :");
+        accountSummary.append(creditCard);
+        accountSummary.append(",\n ");
+
+        accountSummary.append(" \"autoLoanAccounts\" :");
+        accountSummary.append(autoLoan);
+        accountSummary.append("\n} \n}");
         return accountSummary.toString();
     }
 }

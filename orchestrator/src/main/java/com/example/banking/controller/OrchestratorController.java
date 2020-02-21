@@ -14,7 +14,7 @@ public class OrchestratorController {
         this.orchestratorService = orchestratorService;
     }
 
-    @GetMapping("/getAccountSummaryByClientId/{clientId}")
+    @GetMapping(value = "/getAccountSummaryByClientId/{clientId}", produces = "application/json")
     public String getAccountSummary(@PathVariable long clientId){
         return orchestratorService.generateMessage(clientId);
     }

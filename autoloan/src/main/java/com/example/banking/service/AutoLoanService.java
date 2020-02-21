@@ -23,6 +23,7 @@ public class AutoLoanService {
         return ar.save(autoLoan);
     }
 
+    @HystrixCommand(fallbackMethod = "unavailableMessage")
     public List<AutoLoan> findAllById(long id) { return ar.findByClientId(id); }
 
     public List<AutoLoan> findAll() { return ar.findAll(); }

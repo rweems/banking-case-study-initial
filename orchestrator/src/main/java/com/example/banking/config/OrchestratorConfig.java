@@ -17,8 +17,8 @@ public class OrchestratorConfig {
     private SimpleClientHttpRequestFactory getClientHttpRequestFactory(){
         SimpleClientHttpRequestFactory clientHttpRequestFactory
                 = new SimpleClientHttpRequestFactory();
-
         clientHttpRequestFactory.setConnectTimeout(5_000);
+        clientHttpRequestFactory.setReadTimeout(5_000);
         return clientHttpRequestFactory;
 
     }
