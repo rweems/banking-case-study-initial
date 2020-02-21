@@ -20,10 +20,9 @@ public class AutoLoanController {
         return this.autoLoanService.save(autoLoan);
     }
 
-    // TODO fix
-    // does not find all by client id
+
     @GetMapping("autoloan/getLoansByClientId/{clientId}")
-    public List<AutoLoan> getLoansById(@PathVariable Long clientId){
+    public Iterable<AutoLoan> getLoansById(@PathVariable long clientId){
         return this.autoLoanService.findAllById(clientId);
     }
 

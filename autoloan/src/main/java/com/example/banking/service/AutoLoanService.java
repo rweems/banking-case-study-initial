@@ -2,12 +2,14 @@ package com.example.banking.service;
 
 import com.example.banking.model.AutoLoan;
 import com.example.banking.repository.AutoLoanRepository;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+
 public class AutoLoanService {
 
     private AutoLoanRepository ar;
@@ -16,19 +18,14 @@ public class AutoLoanService {
         this.ar = ar;
     }
 
+    @HystrixCommand(fallbackMethod = "unavailableMessage")
     public AutoLoan save(AutoLoan autoLoan) {
         return ar.save(autoLoan);
     }
 
-    public List<AutoLoan> findAllById(Long id) {
-        return ar.findAllById(id);
-    }
+    public List<AutoLoan> findAllById(long id) { return ar.findByClientId(id); }
 
-
-
-    public List<AutoLoan> findAll() {
-        return ar.findAll();
-    }
+    public List<AutoLoan> findAll() { return ar.findAll(); }
 
     public Optional<AutoLoan> findById(Long id) {
         return ar.findById(id);
@@ -46,5 +43,9 @@ public class AutoLoanService {
 
     public void delete(Long id) {
         ar.deleteById(id);
+    }
+
+    public String unavailableMessage(){
+        return "No accounts available to show currently";
     }
 }

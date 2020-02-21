@@ -2,6 +2,7 @@ package com.example.banking.service;
 
 import com.example.banking.model.Deposit;
 import com.example.banking.repository.DepositRepository;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,13 +16,13 @@ public class DepositService {
         this.dr = dr;
     }
 
-
+    @HystrixCommand(fallbackMethod = "unavailableMessage")
     public Deposit save(Deposit deposit) {
         return dr.save(deposit);
     }
 
     public List<Deposit> findAllById(Long id) {
-        return dr.findAllById(id);
+        return dr.findByClientId(id);
     }
 
     public List<Deposit> findAll() {
@@ -45,5 +46,9 @@ public class DepositService {
 
     public void delete(Long id) {
         dr.deleteById(id);
+    }
+
+    public String unavailableMessage(){
+        return "No accounts available to show currently";
     }
 }

@@ -9,4 +9,6 @@ import java.util.List;
 public interface CreditCardRepository extends CrudRepository<CreditCard, Long> {
     List<CreditCard> findAllById(Long id);
     List<CreditCard> findAll();
+
+    List<CreditCard> findByClientId(Long id);
 }

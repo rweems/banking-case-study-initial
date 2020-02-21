@@ -23,7 +23,7 @@ public class CreditCardController {
     // TODO fix
     // does not find all by client id
     @GetMapping("creditcard/getCreditCardsByClientId/{clientId}")
-    public List<CreditCard> getCardsById(@PathVariable Long clientId){
+    public List<CreditCard> getCardsById(@PathVariable long clientId){
         return this.creditCardService.findAllById(clientId);
     }
 

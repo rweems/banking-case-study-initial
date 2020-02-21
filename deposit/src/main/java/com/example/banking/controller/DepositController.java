@@ -21,9 +21,9 @@ public class DepositController {
 
     // TODO fix
     // does not find all by client id
-    @GetMapping("deposit/getDepositAccountsByClientId/{id}")
-    public List<Deposit> getDepositAccountsById(@PathVariable Long id){
-        return this.depositService.findAllById(id);
+    @GetMapping("deposit/getDepositAccountsByClientId/{clientId}")
+    public List<Deposit> getDepositAccountsById(@PathVariable long clientId){
+        return this.depositService.findAllById(clientId);
     }
 
     @GetMapping("deposit/getAllDepositAccounts")

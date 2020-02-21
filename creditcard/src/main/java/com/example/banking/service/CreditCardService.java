@@ -2,6 +2,7 @@ package com.example.banking.service;
 
 import com.example.banking.model.CreditCard;
 import com.example.banking.repository.CreditCardRepository;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,12 +17,13 @@ public class CreditCardService {
         this.cr = cr;
     }
 
+    @HystrixCommand(fallbackMethod = "unavailableMessage")
     public CreditCard save(CreditCard creditCard) {
         return cr.save(creditCard);
     }
 
     public List<CreditCard> findAllById(Long id) {
-        return cr.findAllById(id);
+        return cr.findByClientId(id);
     }
 
     public List<CreditCard> findAll() {
@@ -44,5 +46,9 @@ public class CreditCardService {
 
     public void delete(Long id) {
         cr.deleteById(id);
+    }
+
+    public String unavailableMessage(){
+        return "No accounts available to show currently";
     }
 }

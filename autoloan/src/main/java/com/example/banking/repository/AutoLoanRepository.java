@@ -12,4 +12,5 @@ public interface AutoLoanRepository extends CrudRepository<AutoLoan, Long> {
     List<AutoLoan> findAll();
 
 
+    List<AutoLoan> findByClientId(long id);
 }
