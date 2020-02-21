@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 
-public class AutoLoanService {
+public class AutoLoanService{
 
     private AutoLoanRepository ar;
 
